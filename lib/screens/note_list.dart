@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, use_key_in_widget_constructors
 
 import 'package:flutter/material.dart';
 import 'package:note_keeper/screens/note_detail.dart';
@@ -17,7 +17,7 @@ class NoteListState extends State<NoteList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Note'),
+        title: Text('Notes'),
       ),
       body: getNoteListView(),
       floatingActionButton: FloatingActionButton(

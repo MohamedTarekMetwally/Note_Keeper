@@ -1,4 +1,4 @@
-// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_final_fields, unnecessary_this, no_logic_in_create_state, must_be_immutable
+// ignore_for_file: use_key_in_widget_constructors, prefer_const_constructors, prefer_final_fields, unnecessary_this, no_logic_in_create_state, must_be_immutable, deprecated_member_use
 
 import 'package:flutter/material.dart';
 
@@ -25,11 +25,11 @@ class NoteDetailState extends State<NoteDetail> {
   @override
   Widget build(BuildContext context) {
     TextStyle? textStyle = Theme.of(context).textTheme.bodyText1;
-    return WillPopScope(
+    /*return WillPopScope(
         onWillPop: () {
           moveToLastScreen();
-        },
-        child: Scaffold(
+        },*/
+        return Scaffold(
           appBar: AppBar(
             title: Text(appBarTitle),
             leading: IconButton(
@@ -142,7 +142,8 @@ class NoteDetailState extends State<NoteDetail> {
               ],
             ),
           ),
-        ));
+        );
+        //);
   }
 
   void moveToLastScreen() {

@@ -21,9 +21,9 @@ class DatabaseHelper {
 
   factory DatabaseHelper() {
     // ignore: prefer_conditional_assignment
-    _databaseHelper = DatabaseHelper._createInstance();
+    //_databaseHelper = DatabaseHelper._createInstance();
 
-    return _databaseHelper;
+    return DatabaseHelper._createInstance();
   }
 
   Future<Database?> get database async {
@@ -83,16 +83,17 @@ class DatabaseHelper {
 
   Future<int?> deleteNote(Note note) async {
     Database? db = await this.database;
-    int? result = await db?.rawDelete('DELETE FROM $noteTable WHERE $colId = $id');
+    int? result = await db?.rawDelete(
+        'DELETE FROM $noteTable WHERE $colId = $id'); //<---the id is fake
     return result;
   }
 
   //get number of notes objects in database
-  late Future<int?> getCount async {
+  Future<int?> getCount() async {
     Database? db = await this.database;
-    Future<List<Map<String, Object?>>>? x = db?.rawQuery('SELECT COUNT (*) from $noteTable');
-    int? result = Sqflite.firstIntValue(x);
+    List<Map<String, Object?>>? x =
+        await db?.rawQuery('SELECT COUNT (*) from $noteTable');
+    int? result = Sqflite.firstIntValue(x ?? );
     return result;
   }
-
 }
