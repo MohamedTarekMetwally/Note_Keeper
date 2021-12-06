@@ -17,7 +17,7 @@ class NoteListState extends State<NoteList> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Notes'),
+        title: Text('Note'),
       ),
       body: getNoteListView(),
       floatingActionButton: FloatingActionButton(

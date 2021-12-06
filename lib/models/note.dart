@@ -1,4 +1,4 @@
-// ignore_for_file: unused_field, prefer_final_fields, unnecessary_this, prefer_collection_literals, unnecessary_null_comparison
+// ignore_for_file: unused_field, prefer_final_fields, unnecessary_this, prefer_collection_literals, unnecessary_null_comparison, unused_import
 
 import 'package:flutter/scheduler.dart';
 
@@ -9,9 +9,8 @@ class Note {
   late String _date;
   late int _priority;
 
-  Note(this._title, this._date, this._priority, this._description);
-  Note.withId(
-      this._id, this._title, this._date, this._priority, this._description);
+  Note(this._id, this._title, this._date, this._priority, this._description);
+  Note.withId(this._title, this._date, this._priority, this._description);
 
   int get id => _id;
   String get title => _title;
