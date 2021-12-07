@@ -9,8 +9,8 @@ class Note {
   late String _date;
   late int _priority;
 
-  Note(this._id, this._title, this._date, this._priority, this._description);
-  Note.withId(this._title, this._date, this._priority, this._description);
+  Note(this._title, this._date, this._priority, this._description);
+  Note.withId(this._id,this._title, this._date, this._priority, this._description);
 
   int get id => _id;
   String get title => _title;
@@ -65,4 +65,5 @@ class Note {
     this._priority = map['priority'];
     this._date = map['date'];
   }
+  
 }
