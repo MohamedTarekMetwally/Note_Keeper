@@ -3,67 +3,63 @@
 import 'package:flutter/scheduler.dart';
 
 class Note {
-  late int _id;
-  late String _title;
-  late String _description;
-  late String _date;
-  late int _priority;
+  int id;
+  String title;
+  String description;
+  String date;
+  int priority;
 
-  Note(this._title, this._date, this._priority, this._description);
-  Note.withId(this._id,this._title, this._date, this._priority, this._description);
+  Note(this.title, this.date, this.priority, this.description) : id = -1;
+  Note.withId(this.id, this.title, this.date, this.priority, this.description);
 
-  int get id => _id;
-  String get title => _title;
+  /*int get id => _id;
+  String get title => title;
   String get description => _description;
-  int get priority => _priority;
-  String get date => _date;
+  int get priority => priority;
+  String get date => date;*/
 
-  set title(String newTitle) {
+  /*set title(String newTitle) {
     if (newTitle.length < 255) {
-      this._title = newTitle;
+      this.title = newTitle;
     }
   }
 
   set descriotion(String newDescription) {
     if (newDescription.length < 255) {
-      this._description = newDescription;
+      this.description = newDescription;
     }
   }
 
   set priority(int newPriority) {
     if (newPriority >= 1 && newPriority <= 2) {
-      this._priority = newPriority;
+      this.priority = newPriority;
     }
   }
 
   set date(String newDate) {
     if (newDate.length < 255) {
-      this._date = newDate;
+      this.date = newDate;
     }
-  }
+  }*/
 
   //convert note object into map object
   Map<String, dynamic> toMap() {
     var map = Map<String, dynamic>();
     if (id != null) {
-      map['id'] = _id;
+      map['id'] = id;
     }
-    map['title'] = _title;
-    map['description'] = _description;
-    map['priority'] = _priority;
-    map['date'] = _date;
+    map['title'] = title;
+    map['description'] = description;
+    map['priority'] = priority;
+    map['date'] = date;
 
     return map;
   }
 
   //extract a note object from a map object
 
-  Note.fromMapObject(Map<String, dynamic> map) {
-    this._id = map['id'];
-    this._title = map['title'];
-    this._description = map['description'];
-    this._priority = map['priority'];
-    this._date = map['date'];
+  factory Note.fromMapObject(Map<String, dynamic> map) {
+    return Note.withId(map['id'], map['title'], map['date'], map['priority'],
+        map['description']);
   }
-  
 }

@@ -198,7 +198,7 @@ class NoteDetailState extends State<NoteDetail> {
   }
 
   void updateDescription() {
-    note.descriotion = descriptionController.text;
+    note.description = descriptionController.text;
   }
 
   void _save() async {
