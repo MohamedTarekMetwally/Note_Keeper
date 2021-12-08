@@ -23,15 +23,17 @@ class DatabaseHelper {
     //_databaseHelper = DatabaseHelper._createInstance();
     // ignore: prefer_conditional_assignment
     if (_databaseHelper == null) {
-			_databaseHelper = DatabaseHelper._createInstance(); // This is executed only once, singleton object
-		}
+      _databaseHelper ??= DatabaseHelper
+          ._createInstance(); // This is executed only once, singleton object
+    }
     return DatabaseHelper._createInstance();
+    ;
   }
 
   Future<Database?> get database async {
     // ignore: prefer_conditional_assignment
     if (_database == null) {
-    _database ??= await initializeDatabase();
+      _database ??= await initializeDatabase();
     }
 
     return _database;
@@ -41,13 +43,15 @@ class DatabaseHelper {
     Directory directory = await getApplicationDocumentsDirectory();
     String path = directory.path + 'notes.db';
 
-    var notesDatabase = await openDatabase(path, version: 1, onCreate: _createDb);
+    var notesDatabase =
+        await openDatabase(path, version: 1, onCreate: _createDb);
     return notesDatabase;
   }
 
   void _createDb(Database db, int newversion) async {
-		await db.execute('CREATE TABLE $noteTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, '
-				'$colDescription TEXT, $colPriority INTEGER, $colDate TEXT)');
+    await db.execute(
+        'CREATE TABLE $noteTable($colId INTEGER PRIMARY KEY AUTOINCREMENT, $colTitle TEXT, '
+        '$colDescription TEXT, $colPriority INTEGER, $colDate TEXT)');
   }
 
   //fetch operation : get all note objects from database
@@ -55,8 +59,9 @@ class DatabaseHelper {
   Future<List<Map<String, dynamic>>?> getNoteMapList() async {
     Database? db = await this.database;
 
-    //var result = await db.rawQuery('SELECT * FROM $noteTable order by $colPriority ASC');
-    var result = await db?.query(noteTable, orderBy: '$colPriority ASC');
+    var result = await db
+        ?.rawQuery('SELECT * FROM $noteTable order by $colPriority ASC');
+    //var result = await db?.query(noteTable, orderBy: '$colPriority ASC');
     return result;
   }
 

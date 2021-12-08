@@ -62,7 +62,7 @@ class NoteDetailState extends State<NoteDetail> {
                       child: Text(dropDownStringItem),
                     );
                   }).toList(),
-                  //style: TextStyle,
+                  style: textStyle,
                   value: getPriorityAsString(note.priority),
                   onChanged: (valueSelectedByUser) {
                     setState(() {
@@ -164,7 +164,7 @@ class NoteDetailState extends State<NoteDetail> {
   }
 
   void moveToLastScreen() {
-    Navigator.pop(context,true);
+    Navigator.pop(context, true);
   }
 
   //convert the string priority in form of integer before saving it to database
@@ -214,13 +214,14 @@ class NoteDetailState extends State<NoteDetail> {
       //case 2 --> insert operation
       result = await helper.insertNote(note);
     }
+    
 
     if (result != 0) {
       //success
       _showAlertDialog('Status', 'Note Saved Successfully');
     } else {
       //failure
-      _showAlertDialog('Status', 'Note Saved Successfully');
+      _showAlertDialog('Status', 'Problem Saving Note');
     }
   }
 
