@@ -4,7 +4,8 @@ A Flutter application to save your personal Notes.
 
 ## Getting Started
 
-This project is a starting point for a Flutter application.
+This project is a starting point for a Flutter application where you do all the CRUD functions.
+I developed it with help of SQL LITE database.
 
 
 ## SAMPLES OF THE GUI
