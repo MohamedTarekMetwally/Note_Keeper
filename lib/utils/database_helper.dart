@@ -1,4 +1,5 @@
-// ignore_for_file: unused_import, unused_element, unused_field, unused_local_variable, unnecessary_null_comparison, unnecessary_this, deprecated_member_use, prefer_collection_literals
+// ignore_for_file: unused_import, unused_element, unused_field, unused_local_variable, unnecessary_null_comparison, unnecessary_this, deprecated_member_use, prefer_collection_literals, avoid_print
+import 'package:flutter/widgets.dart';
 import 'package:sqflite/sqflite.dart';
 import 'dart:async';
 import 'dart:io';
@@ -61,6 +62,9 @@ class DatabaseHelper {
 
     var result = await db
         ?.rawQuery('SELECT * FROM $noteTable order by $colPriority ASC');
+    print("-----");
+    print(result);
+    print('-----');
     //var result = await db?.query(noteTable, orderBy: '$colPriority ASC');
     return result;
   }
@@ -70,6 +74,10 @@ class DatabaseHelper {
   Future<int?> insertNote(Note note) async {
     Database? db = await this.database;
     var result = await db?.insert(noteTable, note.toMap());
+
+    print("****");
+    print(result);
+    print('****');
     return result;
   }
 

@@ -11,7 +11,7 @@ class NoteDetail extends StatefulWidget {
   final String appBarTitle;
   final Note note;
   NoteDetail(this.note, this.appBarTitle);
-
+  
   @override
   State<StatefulWidget> createState() {
     return NoteDetailState(this.note, this.appBarTitle);
@@ -207,7 +207,7 @@ class NoteDetailState extends State<NoteDetail> {
     note.date = DateFormat.yMMMd().format(DateTime.now());
 
     int? result;
-    if (note.id != null) {
+    if (note.id != -1) {
       //case 1 --> update operation
       result = await helper.updateNote(note);
     } else {

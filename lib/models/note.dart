@@ -45,9 +45,8 @@ class Note {
   //convert note object into map object
   Map<String, dynamic> toMap() {
     var map = Map<String, dynamic>();
-    if (id != null) {
-      map['id'] = id;
-    }
+
+    //map['id'] = id;
     map['title'] = title;
     map['description'] = description;
     map['priority'] = priority;
